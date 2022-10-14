@@ -1,4 +1,4 @@
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
+-- This fil: can be loaded by calling `lua require('plugins')` from your init.vim
 
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
@@ -25,4 +25,5 @@ return require('packer').startup(function(use)
   use { 'ms-jpq/coq.artifacts', branch = 'artifacts' }
   use { 'ms-jpq/coq.thirdparty', branch = '3p' }
   use 'B4mbus/oxocarbon-lua.nvim'
+  use { "nvim-telescope/telescope-file-browser.nvim" }
 end)
