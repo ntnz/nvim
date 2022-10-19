@@ -26,4 +26,5 @@ return require('packer').startup(function(use)
   use { 'ms-jpq/coq.thirdparty', branch = '3p' }
   use 'B4mbus/oxocarbon-lua.nvim'
   use { "nvim-telescope/telescope-file-browser.nvim" }
+  use 'neovim/nvim-lspconfig'
 end)
