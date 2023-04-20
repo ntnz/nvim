@@ -9,10 +9,25 @@ require("telescope").setup {
       mappings = {
         ["i"] = {
           -- your custom insert mode mappings
+          ["<C-t>"] = function(prompt_bufnr)
+            -- open the prompt in a new tab
+            require("telescope.actions").select_tab(prompt_bufnr)
+            -- open up the picker again
+            require("telescope.builtin").resume()
+            -- return to normal mode
+            vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", true)
+          end,
         },
         ["n"] = {
-          -- your custom normal mode mappings
-        },
+          ["<C-t>"] = function(prompt_bufnr)
+            -- open the prompt in a new tab
+            require("telescope.actions").select_tab(prompt_bufnr)
+            -- open up the picker again
+            require("telescope.builtin").resume()
+            -- return to normal mode
+            vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", true)
+          end,
+        }
       },
     },
   },
