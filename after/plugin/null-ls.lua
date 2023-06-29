@@ -4,7 +4,7 @@ local lsp_formatting = function(bufnr)
       -- apply whatever logic you want (in this example, we'll only use null-ls)
       return client.name == "null-ls"
     end,
-    bufnr = bufnr,
+    bufnr = bufnr
   })
 end
 
@@ -12,27 +12,26 @@ end
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 require("null-ls").setup({
-    sources = {
-        require("null-ls").builtins.formatting.prettier,
-        require("null-ls").builtins.hover.printenv,
-        require("null-ls").builtins.diagnostics.eslint,
-        require("null-ls").builtins.code_actions.cspell,
-        require("null-ls").builtins.diagnostics.cspell,
-        require("null-ls").builtins.code_actions.eslint,
-    },
-    
-    -- add to your shared on_attach callback
-    on_attach = function(client, bufnr)
-      if client.supports_method("textDocument/formatting") then
-        vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-        vim.api.nvim_create_autocmd("BufWritePre", {
-          group = augroup,
-          buffer = bufnr,
-          callback = function()
-            lsp_formatting(bufnr)
-          end,
-        })
-      end
-    end,
-})
+  sources = {
+    require("null-ls").builtins.formatting.prettier,
+    require("null-ls").builtins.hover.printenv,
+    require("null-ls").builtins.diagnostics.eslint,
+    require("null-ls").builtins.code_actions.cspell,
+    require("null-ls").builtins.diagnostics.cspell,
+    require("null-ls").builtins.code_actions.eslint,
+    require("null-ls").builtins.formatting.beautysh,
+    require("null-ls").builtins.formatting.lua_format
+  },
 
+  -- add to your shared on_attach callback
+  on_attach = function(client, bufnr)
+    if client.supports_method("textDocument/formatting") then
+      vim.api.nvim_clear_autocmds({group = augroup, buffer = bufnr})
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        group = augroup,
+        buffer = bufnr,
+        callback = function() lsp_formatting(bufnr) end
+      })
+    end
+  end
+})

@@ -19,5 +19,3 @@ vim.cmd("set so=999")
 vim.cmd("set mouse=")
 
 vim.g.mapleader = " "
-
-vim.g.coq_settings = { auto_start = 'shut-up' } 
