@@ -18,7 +18,6 @@ require("lazy").setup({
     {"ms-jpq/coq_nvim", branch = "coq"}, {"neovim/nvim-lspconfig"},
     {"nvim-telescope/telescope-file-browser.nvim"}, {
         "nvim-telescope/telescope.nvim",
-        version = "0.1.0",
         dependencies = {"nvim-lua/plenary.nvim"}
     }, {"nvim-tree/nvim-web-devicons"}, {"nvim-treesitter/nvim-treesitter"},
     {"nyoom-engineering/oxocarbon.nvim"}, {"williamboman/mason-lspconfig.nvim"},
