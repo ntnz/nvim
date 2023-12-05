@@ -2,6 +2,11 @@ local nnoremap = require("nathan.keymap").nnoremap
 local inoremap = require("nathan.keymap").inoremap
 local vnoremap = require("nathan.keymap").vnoremap
 
+-- open the diagnostic menu
+nnoremap('<Leader>d',
+         [[:lua vim.diagnostic.open_float(0, { scope = 'cursor' })<CR>]])
+
+-- telescope mappings
 nnoremap("<leader>ff", "<cmd>Telescope find_files<CR>")
 nnoremap("<leader>fg", "<cmd>Telescope live_grep<CR>")
 nnoremap("<leader>fb", "<cmd>Telescope buffers<CR>")
