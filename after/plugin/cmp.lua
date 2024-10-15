@@ -9,10 +9,12 @@ cmp.setup({
         ['<S-Tab>'] = cmp.mapping.select_prev_item(),
         ['<C-e>'] = cmp.mapping.abort()
     },
-    sources = {{name = 'nvim_lsp'}, {name = 'luasnip'}, {name = 'buffer'}}
+    sources = cmp.config.sources({
+        {name = 'nvim_lsp'}, {name = 'nvim_lsp_signature_help'},
+        {name = 'luasnip'}
+    }, {{name = 'buffer'}})
 })
 
--- Set configuration for a specific filetype.
 cmp.setup.cmdline('/', {
     mapping = cmp.mapping.preset.cmdline(),
     sources = {{name = 'buffer'}}
@@ -25,12 +27,10 @@ cmp.setup.cmdline('?', {
 
 cmp.setup.cmdline(':', {
     mapping = cmp.mapping.preset.cmdline(),
-    sources = {{name = 'path'}, {name = 'cmdline'}}
+    sources = cmp.config.sources({{name = 'path'}}, {{name = 'cmdline'}})
 })
 
--- Set up lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
--- Replace '<YOUR_LSP_SERVER>' with each LSP server you've enabled.
--- require('lspconfig').<YOUR_LSP_SERVER>.setup {
---   capabilities = capabilities,
--- }
+
+require('lspconfig')['ts_ls'].setup {capabilities = capabilities}
+require('lspconfig')['ember'].setup {capabilities = capabilities}
