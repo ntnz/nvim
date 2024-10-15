@@ -14,7 +14,4 @@ M.vnoremap = bind("v")
 M.xnoremap = bind("x")
 M.inoremap = bind("i")
 
-M.nnoremap('<leader>h', vim.lsp.buf.signature_help, {silent = true})
-M.inoremap('<C-h>', vim.lsp.buf.signature_help, {silent = true})
-
 return M

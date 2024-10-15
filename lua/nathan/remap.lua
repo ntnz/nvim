@@ -3,8 +3,16 @@ local inoremap = require("nathan.keymap").inoremap
 local vnoremap = require("nathan.keymap").vnoremap
 
 -- open the diagnostic menu
-nnoremap('<Leader>d',
-         [[:lua vim.diagnostic.open_float(0, { scope = 'cursor' })<CR>]])
+nnoremap('<Leader>d', function()
+    vim.diagnostic.open_float(nil, {scope = "cursor", focusable = false})
+end)
+inoremap('<C-d>', function()
+    vim.diagnostic.open_float(nil, {scope = "cursor", focusable = false})
+end)
+
+-- open the sig help window
+nnoremap('<leader>h', vim.lsp.buf.signature_help, {silent = true})
+inoremap('<C-h>', vim.lsp.buf.signature_help, {silent = true})
 
 -- telescope mappings
 nnoremap("<leader>ff", "<cmd>Telescope find_files<CR>")
