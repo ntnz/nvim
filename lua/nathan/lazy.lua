@@ -13,11 +13,14 @@ require("lazy").setup({
     {"nvim-lualine/lualine.nvim"}, {"nvim-tree/nvim-web-devicons"},
     {"nyoom-engineering/oxocarbon.nvim"}, {"xiyaowong/transparent.nvim"},
     {"lewis6991/gitsigns.nvim"}, {"neovim/nvim-lspconfig"},
-    {"williamboman/mason.nvim"}, {"williamboman/mason-lspconfig.nvim"},
+    {"williamboman/mason.nvim"}, 
+    {"williamboman/mason-lspconfig.nvim"},
     {
-        "jose-elias-alvarez/null-ls.nvim",
-        dependencies = {"nvim-lua/plenary.nvim"}
-    }, {
+      "nvimtools/none-ls.nvim",
+      dependencies = { "nvim-lua/plenary.nvim", "davidmh/cspell.nvim" },
+      event = { "BufReadPre", "BufNewFile" },
+    },
+    {
         "hrsh7th/nvim-cmp",
         dependencies = {
             "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-buffer", "hrsh7th/cmp-path",
