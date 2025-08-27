@@ -5,7 +5,10 @@ require("lspconfig").efm.setup({
     "typescript", "typescriptreact",
   },
   root_dir = require("lspconfig.util").root_pattern(
-    ".eslintrc.js", ".eslintrc.json", "package.json"
+    "eslint.config.mjs",
+    ".eslintrc", ".eslintrc.js", ".eslintrc.cjs",
+    ".eslintrc.json", ".eslintrc.yaml", ".eslintrc.yml",
+    "package.json"
   ),
   settings = {
     languages = {

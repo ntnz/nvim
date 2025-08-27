@@ -14,6 +14,8 @@ require("null-ls").setup({
       end,
     }),
     cspell.code_actions,
+    require("none-ls.diagnostics.eslint_d"),
+    require("none-ls.code_actions.eslint"),
   },
   on_attach = on_attach,
 })
